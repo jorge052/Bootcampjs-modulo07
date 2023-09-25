@@ -24,18 +24,19 @@ describe("generarNumeroAleatorio", () => {
 describe("generarCarta", () => {
   it("deberia devolver una carta", () => {
     //arrange
-    const carta1: number = 8;
-    const carta2: number = 7;
+    const carta1: number = 9;
+    const carta2: number = 2;
 
     // act
 
     const cartaAleatoria1 = generarCarta(carta1); // para cartas mayor que 7 le suma 2 a la entrada
     const cartaAleatoria2 = generarCarta(carta2); // para cartas menor o igual a 7 devuelve el mismo numero.
-
+    const resultado1 = 11; // resultado esperado si la carta es mayor que 7
+    const resultado2 = 2; // resultado esperado si es menor o igual a 7
     // assert
 
-    expect(cartaAleatoria1).toBe(10);
-    expect(cartaAleatoria2).toBe(7);
+    expect(cartaAleatoria1).toBe(resultado1);
+    expect(cartaAleatoria2).toBe(resultado2);
   });
 });
 
