@@ -4,8 +4,8 @@ import {
   generarCarta,
   devolverPuntos,
   sumarPuntuacion,
+  devolverUrlCarta,
 } from "./motor";
-import { expect, vi } from "vitest";
 
 describe("generarNumeroAleatorio", () => {
   it("Deberia devolver un numero entre el 1 al 10", () => {
@@ -68,6 +68,32 @@ describe("sumarPuntuacion", () => {
     sumarPuntuacion(puntosAsumar);
     // assert
 
-    expect(partida.puntosTotales).toBe(5);
+    expect(partida.puntosTotales).toBe(puntosAsumar);
+  });
+});
+
+describe("devolverUrlCarta", () => {
+  it("deberia devolvier la url especifica para una carta", () => {
+    //arrange
+
+    const carta1: number = 1;
+    const carta2: number = 2;
+    const carta3: number = 3;
+    const carta4: number = 4;
+    const cartaNoreconocida: number = 13;
+    // act
+    const numeroCarta1 = devolverUrlCarta(carta1);
+    const numeroCarta2 = devolverUrlCarta(carta2);
+    const numeroCarta3 = devolverUrlCarta(carta3);
+    const numeroCarta4 = devolverUrlCarta(carta4);
+    const numeroCartaNoreconocido = devolverUrlCarta(cartaNoreconocida);
+
+    // assert
+
+    expect(numeroCarta1).toBe(partida.urlCarta + "/copas/1_as-copas.jpg");
+    expect(numeroCarta2).toBe(partida.urlCarta + "/copas/2_dos-copas.jpg");
+    expect(numeroCarta3).toBe(partida.urlCarta + "/copas/3_tres-copas.jpg");
+    expect(numeroCarta4).toBe(partida.urlCarta + "/copas/4_cuatro-copas.jpg");
+    expect(numeroCartaNoreconocido).toBe(partida.urlCarta + "/back.jpg");
   });
 });
